@@ -1,4 +1,14 @@
 {
+  "name": "chorleybin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "run": "node run dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
     "discord.js": "^14.13.0",
     "dotenv": "^16.3.1",
