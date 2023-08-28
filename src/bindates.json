@@ -1,0 +1,50 @@
+[
+  {
+    "collectionDate": "2023-08-31",
+    "greenBin": false,
+    "blueBin": true,
+    "brownBin": false
+  },
+  {
+    "collectionDate": "2023-09-7",
+    "greenBin": true,
+    "blueBin": false,
+    "brownBin": false
+  },
+  {
+    "collectionDate": "2023-09-14",
+    "greenBin": false,
+    "blueBin": true,
+    "brownBin": true
+  },
+  {
+    "collectionDate": "2023-09-21",
+    "greenBin": true,
+    "blueBin": false,
+    "brownBin": false
+  },
+  {
+    "collectionDate": "2023-09-28",
+    "greenBin": false,
+    "blueBin": true,
+    "brownBin": false
+  },
+  {
+    "collectionDate": "2023-10-5",
+    "greenBin": true,
+    "blueBin": false,
+    "brownBin": false
+  },
+  {
+    "collectionDate": "2023-10-12",
+    "greenBin": false,
+    "blueBin": true,
+    "brownBin": true
+  },
+  {
+    "collectionDate": "2023-10-19",
+    "greenBin": true,
+    "blueBin": false,
+    "brownBin": false
+  }
+]
