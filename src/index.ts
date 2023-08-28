@@ -5,7 +5,7 @@ import schedule from "node-schedule";
 import fs from "fs";
 
 const client = new Discord.Client({
-  intents: [],
+  intents: [Discord.GatewayIntentBits.Guilds],
 });
 
 interface CollectionEntry {
@@ -16,19 +16,17 @@ interface CollectionEntry {
 }
 
 client.once("ready", () => {
-  console.log("Bot is online!");
+  console.log("Bin collection is running!");
 
   // Schedule job to run every Monday at 1pm
-  const job = schedule.scheduleJob("48 12 * * 1", function () {
-    console.log("Schedule triggered success!");
-    fs.readFile("./bindates.json", "utf8", (err, data) => {
+  const job = schedule.scheduleJob("3 14 * * 1", function () {
+    fs.readFile("./src/areas/pr67ad.json", "utf8", (err, data) => {
       if (err) {
         console.error(`Error reading the file: ${err}`);
         return;
       }
 
       const jsonData: CollectionEntry[] = JSON.parse(data);
-      console.log('jsonData: ', jsonData);
 
       const tomorrow = new Date();
       tomorrow.setDate(tomorrow.getDate() + 1);
@@ -38,26 +36,32 @@ client.once("ready", () => {
         .toString()
         .padStart(2, "0")}-${tomorrow.getDate().toString().padStart(2, "0")}`;
 
-      console.log("formattedTomorrow: ", formattedTomorrow);
-
       jsonData.forEach((entry: CollectionEntry) => {
         if (entry.collectionDate === formattedTomorrow) {
-          let binColour = "";
+          let binColour: string[] = [];
+
           if (entry.greenBin) {
-            binColour = "red";
-          } else if (entry.blueBin) {
-            binColour = "blue";
-          } else if (entry.brownBin) {
-            binColour = "green";
+            binColour.push("green");
           }
+          if (entry.blueBin) {
+            binColour.push("blue");
+          }
+          if (entry.brownBin) {
+            binColour.push("brown");
+          }
+
+          let binColourStr =
+            binColour.length > 1
+              ? `${binColour.slice(0, -1).join(", ")} & ${binColour.slice(-1)}`
+              : binColour[0];
 
           const channel = client.channels.cache.get(
             "1145683285557661727"
           ) as Discord.TextChannel;
 
-          if (channel && binColour) {
+          if (channel && binColourStr) {
             channel.send({
-              content: `@everyone, tomorrow's bin collection is ${binColour}`,
+              content: `**Tomorrow's bin collection is ${binColourStr}**\n\n<@213081486583136256>`,
             });
           } else {
             console.log(`Error locating channel to post message!`);
