@@ -18,8 +18,7 @@ interface CollectionEntry {
 client.once("ready", () => {
   console.log("Bin collection is running!");
 
-  // Schedule job to run every Monday at 1pm
-  const job = schedule.scheduleJob("3 14 * * 1", function () {
+  const job = schedule.scheduleJob("0 18 * * 3", function () {
     fs.readFile("./src/areas/pr67ad.json", "utf8", (err, data) => {
       if (err) {
         console.error(`Error reading the file: ${err}`);
