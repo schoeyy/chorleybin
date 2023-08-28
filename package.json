@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "run": "node run dist/index.js"
+    "dev": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
