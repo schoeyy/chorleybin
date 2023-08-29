@@ -49,7 +49,7 @@ client.once("ready", () => {
             binColour.push("brown");
           }
 
-          let binColourStr =
+          let binColourStr: string =
             binColour.length > 1
               ? `${binColour.slice(0, -1).join(", ")} & ${binColour.slice(-1)}`
               : binColour[0];
