@@ -2,6 +2,9 @@ import dotenv from "dotenv";
 dotenv.config();
 import schedule from "node-schedule";
 import fs from "fs/promises";
+import main from "./initialization";
+
+main();
 
 interface User {
   name: string;
@@ -15,7 +18,6 @@ interface CollectionEntry {
   blueBin: boolean;
   brownBin: boolean;
 }
-console.log("Notify listener is running.");
 
 // Reads file for list of all users to notify
 async function readUsersJson(filePath: string): Promise<User[]> {
