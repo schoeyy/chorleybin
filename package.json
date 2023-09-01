@@ -1,9 +1,9 @@
 {
   "name": "chorleybin",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "binApp.js",
   "scripts": {
-    "dev": "node dist/index.js"
+    "dev": "node dist/binApp.js"
   },
   "keywords": [],
   "author": "",
