@@ -22,10 +22,9 @@ const main = () => {
     console.error(
       `[${getTimestamp()}] Failed to load environment configuration.`
     );
-    process.exit(1); // Exit with a failure code
+    process.exit(1);
   }
   console.log(`[${getTimestamp()}] Service is online with no errors...`);
 };
 
-// Run the main function
 export default main;
