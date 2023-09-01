@@ -20,7 +20,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/dist/binApp.js",
+            "program": "${workspaceFolder}/dist/notify.js",
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]
