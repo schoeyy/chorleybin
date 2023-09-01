@@ -1,16 +1,15 @@
 {
-  "name": "chorleybin",
+  "name": "notifyapp",
   "version": "1.0.0",
-  "main": "binApp.js",
+  "main": "notify.js",
   "scripts": {
-    "dev": "node dist/binApp.js"
+    "dev": "node dist/notify.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "discord.js": "^14.13.0",
     "dotenv": "^16.3.1",
     "fs": "^0.0.1-security",
     "node-schedule": "^2.1.1"
