@@ -161,5 +161,5 @@ function retrieveBin(
       console.log(`Error pushing notification to channel!`);
       return;
     }
-  }, 30000); // 1hr = 3,600,000ms, 15hr = 54,000,000
+  }, 54000000); // 1hr = 3,600,000ms, 15hr = 54,000,000
 }
