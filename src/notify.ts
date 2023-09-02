@@ -61,6 +61,12 @@ async function readUsersJson(filePath: string): Promise<User[]> {
             if (entry.collectionDate === formattedTomorrow) {
               let binColour: string[] = [];
 
+              const colourMapping: any = {
+                green: "green_circle",
+                blue: "large_blue_circle",
+                brown: "brown_circle",
+              };
+
               if (entry.greenBin) {
                 binColour.push("green");
               }
@@ -70,6 +76,12 @@ async function readUsersJson(filePath: string): Promise<User[]> {
               if (entry.brownBin) {
                 binColour.push("brown");
               }
+
+              // Create tags for corresponding bins
+              let tags: string[] = binColour.map(
+                (colour) => colourMapping[colour]
+              );
+              let tagsStr: string = tags.join(",");
 
               // Uppercase first letter of each bin colour
               binColour = binColour.map(
@@ -99,14 +111,14 @@ async function readUsersJson(filePath: string): Promise<User[]> {
                       user.name
                     )}, it's ${binColourStr} ${binPlural2} tomorrow!`,
                     Priority: "4",
-                    Tags: "recycle",
+                    Tags: tagsStr,
                   },
                 });
               } catch (error) {
                 console.log(`Error pushing notification to channel!`);
                 return;
               } finally {
-                retrieveBin(user, binColourStr, binPlural2);
+                retrieveBin(user, binColourStr, binPlural2, tagsStr);
               }
             }
           });
@@ -124,7 +136,12 @@ function capitalizeFirstLetter(input: string): string {
   return input.charAt(0).toUpperCase() + input.slice(1);
 }
 
-function retrieveBin(user: User, binColourStr: string, binPlural2: string) {
+function retrieveBin(
+  user: User,
+  binColourStr: string,
+  binPlural2: string,
+  tagsStr: string
+) {
   // Timeout for 15 hours, or 9am the following day
   setTimeout(() => {
     // Send the 'retrieve' notification message to the push server
@@ -137,12 +154,12 @@ function retrieveBin(user: User, binColourStr: string, binPlural2: string) {
             user.name
           )}, grab the ${binColourStr} ${binPlural2}`,
           Priority: "4",
-          Tags: "recycle",
+          Tags: tagsStr,
         },
       });
     } catch (error) {
       console.log(`Error pushing notification to channel!`);
       return;
     }
-  }, 54000000); // 1hr = 3,600,000ms, 15hr = 54,000,000
+  }, 30000); // 1hr = 3,600,000ms, 15hr = 54,000,000
 }
