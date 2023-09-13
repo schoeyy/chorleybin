@@ -3,7 +3,7 @@
   "version": "0.6.6",
   "main": "notify.js",
   "scripts": {
-    "dev": "node dist/notify.js"
+    "dev": "bun dist/notify.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,10 @@
     "node-schedule": "^2.1.1"
   },
   "devDependencies": {
-    "@types/node-schedule": "^2.1.0"
+    "@types/node-schedule": "^2.1.0",
+    "bun-types": "^1.0.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
   }
 }
