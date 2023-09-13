@@ -3,7 +3,8 @@
   "version": "0.6.6",
   "main": "notify.js",
   "scripts": {
-    "dev": "bun dist/notify.js"
+    "dev": "bun dist/notify.js",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
