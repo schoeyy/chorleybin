@@ -3,6 +3,7 @@ dotenv.config();
 import schedule from "node-schedule";
 import fs from "fs/promises";
 import main from "./initialization";
+import { consoleOutputMessage, consoleErrorMessage } from "./console-message";
 
 main();
 
@@ -114,8 +115,9 @@ async function readUsersJson(filePath: string): Promise<User[]> {
                     Tags: tagsStr,
                   },
                 });
+                consoleOutputMessage(user.name);
               } catch (error) {
-                console.log(`Error pushing notification to channel!`);
+                consoleErrorMessage(user.name, error);
                 return;
               } finally {
                 retrieveBin(user, binColourStr, binPlural2, tagsStr);
@@ -157,8 +159,9 @@ function retrieveBin(
           Tags: tagsStr,
         },
       });
+      consoleOutputMessage(user.name);
     } catch (error) {
-      console.log(`Error pushing notification to channel!`);
+      consoleErrorMessage(user.name, error);
       return;
     }
   }, 54000000); // 1hr = 3,600,000ms, 15hr = 54,000,000
