@@ -1,7 +1,7 @@
 import * as os from "os";
 import moment from "moment";
 
-export function consoleOutputMessage(name: string): void {
+export function consoleOutputMessage(name: string, topic_id: string): void {
   const timestamp = moment().format("YYYY-MM-DD HH:mm:ss");
   const server = os.type();
 
@@ -21,7 +21,7 @@ export function consoleOutputMessage(name: string): void {
   }
 
   console.log(
-    `[${timestamp}] sent notification to ${name} from ${serverName}.`
+    `[${timestamp}] sent notification to ${name} at ${process.env.SERVER_ADDRESS}/${topic_id} from ${serverName}.`
   );
 }
 export function consoleErrorMessage(name: string, error: any): void {

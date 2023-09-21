@@ -115,7 +115,7 @@ async function readUsersJson(filePath: string): Promise<User[]> {
                     Tags: tagsStr,
                   },
                 });
-                consoleOutputMessage(user.name);
+                consoleOutputMessage(user.name, user.topic_id);
               } catch (error) {
                 consoleErrorMessage(user.name, error);
                 return;
@@ -159,7 +159,7 @@ function retrieveBin(
           Tags: tagsStr,
         },
       });
-      consoleOutputMessage(user.name);
+      consoleOutputMessage(user.name, user.topic_id);
     } catch (error) {
       consoleErrorMessage(user.name, error);
       return;
